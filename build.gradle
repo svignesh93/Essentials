@@ -1,0 +1,51 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.30'
+    id 'java'
+    id "com.diffplug.spotless" version "5.14.2"
+}
+
+group 'com.litekite.essentials'
+version '1.0'
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.30'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+allprojects {
+    spotless {
+        // ratchetFrom 'origin/main'
+        format 'misc', {
+            target '**/*.gradle', '**/*.md', '**/.gitignore'
+            trimTrailingWhitespace()
+            indentWithSpaces()
+            endWithNewline()
+        }
+        format 'xml', {
+            target '**/*.xml'
+            trimTrailingWhitespace()
+            indentWithSpaces()
+            endWithNewline()
+        }
+        java {
+            target '**/src/**/*.java'
+            googleJavaFormat().aosp()
+            licenseHeaderFile rootProject.file('spotless/copyright.java')
+        }
+        kotlin {
+            target '**/src/**/*.kt'
+            ktlint("0.42.1")
+            licenseHeaderFile rootProject.file('spotless/copyright.kt')
+        }
+    }
+}
