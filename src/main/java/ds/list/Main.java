@@ -15,28 +15,35 @@
  */
 package ds.list;
 
+/**
+ * Experimenting with {@link DynamicArrayList}
+ *
+ * @author Vignesh S
+ * @version 1.0, 28/08/2021
+ * @since 1.0
+ */
 class Main {
 
     public static void main(String[] args) {
-        DynamicArrayList<Integer> values = new DynamicArrayList<>();
+        DynamicArrayList<Integer> elements = new DynamicArrayList<>();
 
-        values.add(1);
-        values.add(2);
-        values.add(3);
+        elements.add(1);
+        elements.add(2);
+        elements.add(3);
 
-        System.out.println(values.get(1)); // [2]
+        System.out.println(elements.get(1)); // [2]
         System.out.println("\n");
-        System.out.println(values); // [1, 2, 3]
+        System.out.println(elements); // [1, 2, 3]
 
-        values.remove((Integer) 1); // [2, 3]
-        values.remove(1); // [2]
-
-        System.out.println("\n");
-        System.out.println(values); // [2]
-
-        values.add(0, 1);
+        elements.remove((Integer) 1); // [2, 3]
+        elements.remove(1); // [2]
 
         System.out.println("\n");
-        System.out.println(values); // [1, 2]
+        System.out.println(elements); // [2]
+
+        elements.add(0, 1);
+
+        System.out.println("\n");
+        System.out.println(elements); // [1, 2]
     }
 }

@@ -28,12 +28,13 @@ import java.util.Objects;
  */
 public class DynamicArrayList<T> {
 
-    private int capacity = 3;
+    private int capacity = 2;
     private int length = 0;
     private Object[] elements = new Object[capacity];
 
     @SuppressWarnings("unchecked")
     public T get(int index) {
+        Objects.checkIndex(index, size());
         return (T) elements[index];
     }
 
@@ -44,7 +45,7 @@ public class DynamicArrayList<T> {
 
     public void add(int index, T element) {
         Objects.checkIndex(index, size());
-        if (length == (capacity - 1)) {
+        if (length == capacity) {
             growCapacity();
         }
         int copyLength = size() - index;
@@ -54,7 +55,7 @@ public class DynamicArrayList<T> {
     }
 
     public void add(T element) {
-        if (length == (capacity - 1)) {
+        if (length == capacity) {
             growCapacity();
         }
         elements[length++] = element;
@@ -88,9 +89,9 @@ public class DynamicArrayList<T> {
 
     public boolean remove(int index) {
         Objects.checkIndex(index, size());
-        int copyLength = size() - index;
+        int copyLength = (size() - 1) - index;
         System.arraycopy(elements, index + 1, elements, index, copyLength);
-        --length;
+        elements[--length] = null;
         return true;
     }
 
