@@ -18,8 +18,19 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+compileKotlin {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_11
+}
+
 test {
     useJUnitPlatform()
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_11
 }
 
 allprojects {
