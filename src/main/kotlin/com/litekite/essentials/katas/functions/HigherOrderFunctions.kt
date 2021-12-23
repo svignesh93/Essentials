@@ -15,21 +15,57 @@
  */
 package com.litekite.essentials.katas.functions
 
-class HigherOrderFunctions {
+/**
+ * This class inherits a functional lambda that takes Int as an argument and return an Int.
+ */
+class HigherOrderFunctions : (Int) -> Int {
 
     companion object {
 
-        private fun isOdd(x: Int) = x % 2 != 0
+        // Receiver Object format RECEIVER_TYPE.(OTHER_PARAM) -> RETURN_TYPE
+        private val sum: Int.(Int) -> Int = { other: Int -> this.plus(other) }
+
+        private val sumByRef: Int.(Int) -> Int = Int::plus
+
+        // Takes integer value as argument and returns boolean result
+        // Function is represented as a value
+        private val isEven: (Int) -> Boolean = { it % 2 == 0 }
+
+        private val isFloat: (Any) -> Boolean = { i: Any -> i is Float }
+
+        private fun <T> isInt(): (T) -> Boolean = { x: T -> x is Int }
+
+        // Compact function (Single expression function)
+        private fun isOdd(x: Int): Boolean = x % 2 != 0
 
         @JvmStatic
         fun main(args: Array<String>) {
-            // Receiver Parameter format RECEIVER_TYPE.(OTHER_PARAM) -> RETURN_TYPE
-            val sum: Int.(Int) -> Int = { other -> this.plus(other) }
-            val result = 2.sum(2)
-            println("result: $result")
+            // Lambda (or) Higher order functions - Anonymous function represented in curly braces
+            // Function or lambda passed as an argument to another function.
+            val result = sum(2, 2).plus(2.sum(2)).plus(sumByRef(2, 2))
+            println("sum result: $result")
+
+            val isInt = isInt<Int>().invoke(3)
+            println("isInt: $isInt")
+
+            println("isFloat: ${isFloat(3.0)}")
+
+            val higherOrderFunction: (Int) -> Int = HigherOrderFunctions()
+            println("Class level functional inheritance: ${higherOrderFunction.invoke(2)}")
 
             val numbers = listOf(1, 2, 3)
+
+            // Value reference as a predicate filter.
+            println("value predicate even num:")
+            println(numbers.filter(isEven))
+
+            // Function predicate filter that passed as a reference.
+            println("functional predicate odd num:")
             println(numbers.filter(::isOdd))
         }
+    }
+
+    override fun invoke(x: Int): Int {
+        return x.inc()
     }
 }
