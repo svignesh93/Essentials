@@ -46,6 +46,26 @@ class ExpArray {
             list.forEach {
                 println(it)
             }
+
+            // Sequence with collection - recommended for longer items.
+            // collection op recommended for shorter items
+            // each item gets processed one by one through all intermediate ops
+            // when the terminal operation request happens
+            val words = listOf("The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog")
+
+            // convert the List to a Sequence
+            val wordsSequence = words.asSequence()
+
+            val lengthsSequence = wordsSequence.filter { println("filter: $it"); it.length > 3 }
+                .map { println("length: ${it.length}"); it.length }
+                .take(4)
+
+            println("Lengths of first 4 words longer than 3 chars")
+
+            // terminal operation: obtaining the result as a List
+            // count(), sum(), toList()
+            // The sequence op starts only here at the time of terminal op.
+            println(lengthsSequence.toList())
         }
     }
 }
