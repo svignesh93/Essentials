@@ -15,55 +15,53 @@
  */
 package com.litekite.essentials.katas.controlflows
 
-class Loops {
+fun main() {
+    // Range in loop
+    println("Range: ")
+    for (i in 1..3) {
+        println(i)
+    }
 
-    companion object {
+    println("Repeat: ")
+    repeat(3) {
+        println("Repeat")
+    }
 
-        @JvmStatic
-        fun main(args: Array<String>) {
-            // Range in loop
-            println("Range: ")
-            for (i in 1..3) {
-                println(i)
-            }
+    println("Repeat with index: ")
+    repeat(3) { index ->
+        println(index)
+    }
 
-            println("Repeat: ")
-            repeat(3) {
-                println("Repeat")
-            }
+    // Backward in loop with step counter
+    println("Backward loop with steps: ")
+    for (i in 6 downTo 0 step 2) {
+        println(i)
+    }
 
-            println("Repeat with index: ")
-            repeat(3) { index ->
-                println(index)
-            }
+    val arr = arrayOf(1, 2, 3, 4)
 
-            // Backward in loop with step counter
-            println("Backward loop with steps: ")
-            for (i in 6 downTo 0 step 2) {
-                println(i)
-            }
+    println("Array Iterator: ")
+    for (value in arr.iterator()) {
+        println(value)
+    }
 
-            val arr = arrayOf(1, 2, 3, 4)
+    println("Array Indices: ")
+    for (index in arr.indices) {
+        println(index)
+    }
 
-            println("Array Indices: ")
-            for (index in arr.indices) {
-                println(index)
-            }
+    println("Array Indices with values: ")
+    for ((index, value) in arr.withIndex()) {
+        println("index: $index value: $value")
+    }
 
-            println("Array Indices with values: ")
-            for ((index, value) in arr.withIndex()) {
-                println("index: $index value: $value")
-            }
+    println("Array ForEach: ")
+    arr.forEach {
+        println(it)
+    }
 
-            println("Array ForEach: ")
-            arr.forEach {
-                println(it)
-            }
-
-            println("Array ForEach: ")
-            arr.forEachIndexed { index, value ->
-                println("index: $index value: $value")
-            }
-        }
+    println("Array ForEach: ")
+    arr.forEachIndexed { index, value ->
+        println("index: $index value: $value")
     }
 }
