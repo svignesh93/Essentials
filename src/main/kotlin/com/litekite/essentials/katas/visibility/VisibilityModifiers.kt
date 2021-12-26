@@ -31,7 +31,10 @@ package com.litekite.essentials.katas.visibility
 @Suppress("unused")
 class VisibilityModifiers {
 
-    open class A {
+    /**
+     * All classes supertype is Any in Kotlin, and it defines [equals] [hashCode] and [toString] for all classes
+     */
+    open class A : Any() {
 
         // By default, it's public
         val about = "A Class"
@@ -42,14 +45,26 @@ class VisibilityModifiers {
 
         protected open val name: String = "A"
 
-        fun printName() {
+        open fun printName() {
             println("name: $name")
         }
     }
 
-    class B : A() {
-        override val name: String = "B"
+    interface Base {
+        fun printName() {}
     }
+
+    open class B : A(), Base {
+        // Overriding for subclasses is disabled here with final keyword.
+        final override val name: String = "B"
+
+        override fun printName() {
+            super<A>.printName()
+            super<Base>.printName()
+        }
+    }
+
+    class C : B()
 
     companion object {
 
