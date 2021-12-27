@@ -90,6 +90,7 @@ enum class Color(val rgb: Int) {
 
     abstract fun printValue()
 
+    // Static methods and properties in Kotlin
     companion object {
 
         fun valueOf(rgb: Int) = enumValues<Color>().firstOrNull { it.rgb == rgb }
@@ -97,10 +98,13 @@ enum class Color(val rgb: Int) {
 }
 
 /**
- * Type erasure in generics that replaces T with the identified object type at Runtime and it cannot be known at
+ * Type erasure in generics that replaces T with the identified object type at Runtime, and it cannot be known at
  * compile time.
  *
  * Reified with inline fun in kotlin, compiles copies and replaces the caller method block and reveals its object type.
+ *
+ * <reified T : Enum<T>> restricts the inflow to object type of Enum<T>
+ *     known as Generic constraint or Generic Restriction
  */
 inline fun <reified T : Enum<T>> printAllValues() {
     print(enumValues<T>().joinToString { it.name })
