@@ -101,7 +101,7 @@ enum class Color(val rgb: Int) {
  * Type erasure in generics that replaces T with the identified object type at Runtime, and it cannot be known at
  * compile time.
  *
- * Reified with inline fun in kotlin, compiles copies and replaces the caller method block and reveals its object type.
+ * Reified with inline fun in kotlin, compiler copies and replaces the caller method block and reveals its object type.
  *
  * <reified T : Enum<T>> restricts the inflow to object type of Enum<T>
  *     known as Generic constraint or Generic Restriction
