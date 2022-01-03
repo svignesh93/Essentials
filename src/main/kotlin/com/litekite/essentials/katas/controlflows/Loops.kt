@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 LiteKite Startup. All rights reserved.
+ * Copyright 2021-2022 LiteKite Startup. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,12 @@ package com.litekite.essentials.katas.controlflows
 fun main() {
     // Range in loop
     println("Range: ")
-    for (i in 1..3) {
+    OuterLoop@ for (i in 1..3) {
         println(i)
+        if (i == 2)
+            break@OuterLoop // Labelled Break - Breaks to Outer Loop.
+        else
+            continue@OuterLoop // Labelled Continue - Continues next iteration.
     }
 
     println("Repeat: ")
