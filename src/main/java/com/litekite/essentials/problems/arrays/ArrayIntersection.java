@@ -34,7 +34,7 @@ class ArrayIntersection {
         int[] arrOne = new int[] {1, 5, 2, 12, 6};
         int[] arrTwo = new int[] {13, 5, 9, 5, 8};
         Integer[] intersection = arrayIntersection(arrOne, arrTwo);
-        System.out.println("intersection: " + Arrays.toString(intersection));
+        System.out.println("intersection: " + Arrays.toString(intersection)); // prints > [5]
     }
 
     /**
