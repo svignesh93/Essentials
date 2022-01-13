@@ -16,7 +16,7 @@
 package com.litekite.essentials.problems.str;
 
 /**
- * Reverses a string with O(n) time complexity.
+ * Reverses a string with O(n) time complexity and O(1) space complexity.
  *
  * <p>StringBuilder is not thread safe while StringBuffer is thread safe. String s = "a" creates an
  * immutable string in string pool. String s = new String("a") creates string in a java heap.
