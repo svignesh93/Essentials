@@ -41,6 +41,8 @@ class MajorityElement {
 
             if (majorityCount < count) {
                 majorityElementKey = key;
+            } else if (majorityCount == count) {
+                majorityElementKey = 0;
             }
         }
         return majorityElementKey;
