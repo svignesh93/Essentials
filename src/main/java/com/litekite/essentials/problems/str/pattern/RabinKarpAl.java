@@ -17,7 +17,7 @@ package com.litekite.essentials.problems.str.pattern;
 
 class RabinKarpAl {
 
-    private static final int prime = 101;
+    private static final int prime = 29;
 
     public static void main(String[] args) {
         // Prints Index 19
@@ -35,17 +35,16 @@ class RabinKarpAl {
     private static int detectSubStr(String str, String pattern) {
         int strLength = str.length();
         int patternLength = pattern.length();
-        int patternHash = calculateHash(pattern, pattern.length());
-        int subStrHash = calculateHash(str, patternLength);
+        long patternHash = calculateHash(pattern, pattern.length());
+        long subStrHash = calculateHash(str, patternLength);
 
-        for (int index = 0; index < strLength - patternLength; index++) {
-            if (patternHash != subStrHash) {
-                subStrHash = recalculateHash(str, index, subStrHash, patternLength);
-                continue;
+        for (int index = 0; index + (patternLength - 1) < strLength; index++) {
+            if (patternHash == subStrHash && matchPattern(str, pattern, index)) {
+                return index;
             }
 
-            if (matchPattern(str, pattern, index)) {
-                return index;
+            if (index + patternLength < strLength) {
+                subStrHash = recalculateHash(str, index, subStrHash, patternLength);
             }
         }
 
@@ -66,14 +65,15 @@ class RabinKarpAl {
         return false;
     }
 
-    private static int recalculateHash(String s, int index, int oldSubStrHash, int patternLength) {
-        int hash = (oldSubStrHash - s.charAt(index) / prime);
-        hash += s.charAt(index + patternLength) * Math.pow(prime, index);
+    private static long recalculateHash(
+            String s, int index, long oldSubStrHash, int patternLength) {
+        long hash = (oldSubStrHash - s.charAt(index)) / prime;
+        hash += s.charAt(index + patternLength) * Math.pow(prime, patternLength - 1);
         return hash;
     }
 
-    private static int calculateHash(String s, int len) {
-        int hash = 1;
+    private static long calculateHash(String s, int len) {
+        long hash = 0;
         for (int index = 0; index < len; index++) {
             hash += s.charAt(index) * Math.pow(prime, index);
         }
