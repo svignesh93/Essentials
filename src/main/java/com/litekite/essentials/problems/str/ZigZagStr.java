@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Stores the given string characters in a zigzag pattern and reads line by line.
+ * Stores the given string characters in a zigzag pattern and reads line by line in O(n) time.
  *
  * <p>The given string -> P A Y P A L I S H I R I N G
  *
