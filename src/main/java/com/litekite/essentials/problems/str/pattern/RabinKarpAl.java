@@ -15,6 +15,12 @@
  */
 package com.litekite.essentials.problems.str.pattern;
 
+/**
+ * Detects a substring from a given string in O(n) time complexity using Rabin Karp Algorithm.
+ *
+ * <p>In the worst case scenario, if the hash matches for all matches, it will take O(nm) time
+ * complexity.
+ */
 class RabinKarpAl {
 
     private static final int prime = 29;
