@@ -30,6 +30,11 @@ import java.util.List;
  * <p>Postorder - recursively looks for left node, recursively looks for right node, finally visits
  * the node.
  *
+ * <p>All Inorder, Preorder, Postorder traversal uses Stack to visit the nodes.
+ *
+ * <p>Level Order Traversal - that uses Queue to iteratively visit left and right children nodes at
+ * the same level (same as Breath First Search Algorithm - BFS)
+ *
  * @param <T> any valid java object type.
  * @author Vignesh S
  * @version 1.0, 22/01/2022
