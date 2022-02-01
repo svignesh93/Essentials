@@ -42,8 +42,6 @@ class BubbleSort {
 
             boolean isSwapped = false;
 
-            System.out.println("steps: " + step);
-
             for (int index = 0; index < size - step - 1; index++) {
 
                 if (arr[index] > arr[index + 1]) {
