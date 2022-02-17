@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.litekite.essentials.ds.linear.linkedlist;
+package com.litekite.essentials.ds.arraylist;
 
 /**
- * Experimenting with {@link SinglyLinkedList}
+ * Experimenting with {@link DynamicArrayList}
  *
  * @author Vignesh S
  * @version 1.0, 28/08/2021
@@ -25,28 +25,25 @@ package com.litekite.essentials.ds.linear.linkedlist;
 class Main {
 
     public static void main(String[] args) {
-        SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
-        list.add(5);
-        list.add(6);
-        list.add(7);
-        list.add(8);
+        DynamicArrayList<Integer> elements = new DynamicArrayList<>();
 
-        for (int index = 0; index < list.size(); index++) {
-            System.out.println(list.get(index));
-        }
+        elements.add(1);
+        elements.add(2);
+        elements.add(3);
 
-        System.out.println();
+        System.out.println(elements.get(1)); // [2]
+        System.out.println("\n");
+        System.out.println(elements); // [1, 2, 3]
 
-        list.remove(7);
+        elements.remove((Integer) 1); // [2, 3]
+        elements.remove(1); // [2]
 
-        for (int index = 0; index < list.size(); index++) {
-            System.out.println(list.get(index));
-        }
+        System.out.println("\n");
+        System.out.println(elements); // [2]
 
-        list.reverse();
+        elements.add(0, 1);
 
-        for (int index = 0; index < list.size(); index++) {
-            System.out.println(list.get(index));
-        }
+        System.out.println("\n");
+        System.out.println(elements); // [1, 2]
     }
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.litekite.essentials.ds.linear.arraylist;
+package com.litekite.essentials.ds.arraylist;
 
 import java.util.Arrays;
 import java.util.Objects;

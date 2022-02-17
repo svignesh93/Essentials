@@ -13,24 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.litekite.essentials.ds.linear.map;
+package com.litekite.essentials.ds.Heap;
 
 /**
- * Experimenting with {@link HashMap}
+ * Experimenting with {@link MaxHeap}
  *
  * @author Vignesh S
- * @version 1.0, 16/01/2022
+ * @version 1.0, 01/02/2022
  * @since 1.0
  */
 class Main {
 
     public static void main(String[] args) {
-        HashMap<String, Integer> map = new HashMap<>();
+        MaxHeap maxHeap = new MaxHeap();
+        maxHeap.insert(3);
+        maxHeap.insert(4);
+        maxHeap.insert(9);
+        maxHeap.insert(5);
+        maxHeap.insert(2);
 
-        map.put("john", 963021054);
-        map.put("mark", 892754694);
+        System.out.println("Max-Heap array: " + maxHeap);
 
-        System.out.println(map.get("john")); // prints 963021054
-        System.out.println(map.get("mark")); // prints 892754694
+        maxHeap.delete(4);
+        System.out.println("After deleting an element: " + maxHeap);
     }
 }
