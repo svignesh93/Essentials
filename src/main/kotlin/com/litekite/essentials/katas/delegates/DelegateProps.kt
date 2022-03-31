@@ -19,7 +19,7 @@ import kotlin.properties.Delegates
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-class Laziness {
+class DelegateProps {
 
     companion object {
 
